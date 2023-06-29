@@ -3,13 +3,16 @@ import { copy, linkIcon, loader, tick } from "../assets";
 import { MdArrowCircleUp } from "react-icons/md";
 
 const Demo = () => {
+  const [article, setArtcle] = useState({ url: "", summary: "" });
+
+  const handleSubmit = async (e) => {};
   return (
     <section className="mt-16 w-full max-w-xl">
       {/*Search*/}
       <div className="flex flex-col w-full gap-2">
         <form
           className="relative flex justify-center items-center"
-          onSubmit={() => {}}
+          onSubmit={handleSubmit}
         >
           <img
             src={linkIcon}
@@ -19,8 +22,10 @@ const Demo = () => {
           <input
             type="url"
             placeholder="Enter a URL"
-            value=""
-            onChange={() => {}}
+            value={article.url}
+            onChange={(e) => {
+              setArtcle({ ...article, url: e.target.value });
+            }}
             required
             className="url_input peer "
           />
