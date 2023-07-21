@@ -4,7 +4,7 @@ import { MdArrowCircleUp } from "react-icons/md";
 import { useLazyGetSummaryQuery } from "../services/article";
 
 const Demo = () => {
-  const [article, setArtcle] = useState({ url: "", summary: "" });
+  const [article, setArticle] = useState({ url: "", summary: "" });
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
 
   const handleSubmit = async (e) => {
@@ -34,7 +34,7 @@ const Demo = () => {
             placeholder="Enter a URL"
             value={article.url}
             onChange={(e) => {
-              setArtcle({ ...article, url: e.target.value });
+              setArticle({ ...article, url: e.target.value });
             }}
             required
             className="url_input peer "
