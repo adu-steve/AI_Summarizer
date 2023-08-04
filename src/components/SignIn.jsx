@@ -1,26 +1,30 @@
 import GoogleButton from "react-google-button";
-import { UserAuth } from "../AuthContext";
+import { useAuth } from "../AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const SignIn = () => {
-  const { googleSignIn, user } = UserAuth();
+  const { signInWithGoogle, user } = useAuth();
   const navigate = useNavigate();
-  const handleGoogleSignIn = async () => {
-    try {
-      await googleSignIn();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   useEffect(() => {
-    if (user != null) {
-      navigate("/");
+    if (user) {
+      console.log(`User: ${user}`);
     }
   }, [user]);
   return (
     <div className="my-10 max-w-full flex justify-center items-center">
-      <GoogleButton onClick={handleGoogleSignIn} />
+      <GoogleButton
+        onClick={() =>
+          signInWithGoogle()
+            .then(
+              (user) => console.log(`User: ${user}`),
+
+              navigate("/")
+            )
+            .catch((error) => console.log(error))
+        }
+      />
     </div>
   );
 };

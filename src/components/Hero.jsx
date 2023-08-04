@@ -1,16 +1,6 @@
 import { logo } from "../assets";
-import { UserAuth } from "../AuthContext";
-import { Link } from "react-router-dom";
-const Hero = () => {
-  const { logOut, user } = UserAuth();
 
-  const handleSignOut = async () => {
-    try {
-      await logOut();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+const Hero = () => {
   return (
     <header className="w-full flex justify-center items-center flex-col">
       <nav className="flex justify-between items-center w-full mb-10 pt-3">
@@ -24,11 +14,6 @@ const Hero = () => {
         >
           Github
         </button>
-        {user?.displayName ? (
-          <button onClick={handleSignOut}>LogOut</button>
-        ) : (
-          <Link to="/signin">Sign In</Link>
-        )}
       </nav>
       <h1 className="head_text">
         Summarize Articles with <br className="max-md:hidden" />
