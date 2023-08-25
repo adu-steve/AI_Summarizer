@@ -1,19 +1,19 @@
-import Home from "./components/Home";
-import SignIn from "./components/SignIn";
+import Hero from "./components/Hero";
+import Demo from "./components/Demo";
+
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import { AuthContextProvider } from "./AuthContext";
 
 const App = () => {
   return (
-    <div>
-      <AuthContextProvider>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/signin" element={<SignIn />}></Route>
-        </Routes>
-      </AuthContextProvider>
-    </div>
+    <main>
+      <div className="main">
+        <div className="gradient" />
+      </div>
+      <div className="app">
+        <Hero />
+        <Demo />
+      </div>
+    </main>
   );
 };
 
